@@ -58,6 +58,27 @@ mission:
       Build commands with kobold-executor. Deployment configuration with all implementors.
       Git workflow with kobold-orchestrator. PR management with github-specialist.
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/devops-context.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered (CI/CD changes, new workflows,
+       deployment updates, port changes, new branches)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (broken pipelines, config changes) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - CI/CD pipeline changes or new workflows
+    - Deployment configuration updates
+    - Port or service changes
+    - New branch conventions
+    - Docker/container modifications
+
 responsibilities:
   - priority: high
     title: CI/CD Pipeline

@@ -57,6 +57,27 @@ mission:
       API response formats with astro-site (data consumed by frontend). Data model
       design with kobold-orchestrator. Database schema with postgresql-specialist.
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/python-api-context.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered (new models, migrations, services,
+       CLI commands, test additions)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (schema changes, new services) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - New SQLAlchemy models or field additions
+    - New Alembic migrations
+    - Service additions (popularity, matching, etc.)
+    - New CLI commands
+    - Test count and coverage changes
+
 responsibilities:
   - priority: high
     title: Model Development

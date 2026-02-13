@@ -76,6 +76,26 @@ responsibilities:
     title: PR Orchestration
     description: Create pull requests after verified implementation
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/project-overview.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered during this task (completed tickets,
+       new cross-domain contracts, architecture decisions, status changes)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings to knowledge file immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - Linear ticket status changes (In Progress → Done)
+    - New cross-domain contracts or interface agreements
+    - Architecture decisions made during this session
+    - New agent mesh observations (what worked, what didn't)
+
 integrationProtocols:
   handoffTo:
     - agent: kobold-executor

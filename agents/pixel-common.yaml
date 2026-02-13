@@ -59,6 +59,27 @@ mission:
       across all pixel.horse code. Binary protocol must stay in sync between encoder/decoder.
       LoS algorithm used by both client (rendering) and server (visibility service).
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/pixel-horse-common.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered (new entity types, Action enum changes,
+       encoder modifications, new constants)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (encoder changes, interface breaks) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - New entity type registrations
+    - Action enum additions or modifications
+    - UpdateFlags changes (CRITICAL - affects both client and server)
+    - New constants or changed values
+    - LoS algorithm modifications
+
 responsibilities:
   - priority: high
     title: Entity System

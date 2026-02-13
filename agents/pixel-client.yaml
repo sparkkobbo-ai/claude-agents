@@ -55,6 +55,27 @@ mission:
       Action enum additions with pixel-common. Network message formats with pixel-server.
       Entity rendering specs with pixel-common (mixin definitions).
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/pixel-horse-client.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered (new files, changed line counts,
+       new features implemented, new pitfalls found, resolved issues)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (new bugs, architectural patterns) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - New files created or significant size changes
+    - Features moved from in-progress to completed
+    - New critical pitfalls discovered
+    - IMGUI widget additions, input system changes
+    - Rendering pipeline modifications
+
 responsibilities:
   - priority: high
     title: Game Client Implementation

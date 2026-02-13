@@ -55,6 +55,27 @@ mission:
       Action handler contracts with pixel-client. Entity type registration with pixel-common.
       Visibility calculations with pixel-common (lineOfSight.ts).
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/pixel-horse-server.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new information discovered (new controllers, action handlers,
+       services, map changes, new pitfalls)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (new rate limit issues, security concerns) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - New controllers or action handlers added
+    - Service additions or modifications
+    - Map configuration changes
+    - Rate limiting adjustments
+    - New security considerations
+
 responsibilities:
   - priority: high
     title: Server Action Handlers

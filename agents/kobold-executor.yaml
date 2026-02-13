@@ -57,6 +57,26 @@ responsibilities:
     title: Known Issues Awareness
     description: Track Windows bundle caching, canvas module, and other known issues
 
+knowledgeMaintenance:
+  knowledgeFile: .claude/knowledge/build-and-test.md
+  protocol: |
+    BEFORE completing any task or returning final results:
+    1. Read your knowledge file to see what's currently documented
+    2. Identify new build/test information discovered (new commands, timing changes,
+       new known issues, resolved issues)
+    3. Update the knowledge file using Edit tool - replace stale info, don't append
+    4. Keep under 200 lines
+
+    DURING long-running tasks (every ~10 tool calls or significant discovery):
+    1. Persist critical findings (new build failures, timing data) immediately
+    2. This protects against context compaction losing discoveries
+
+    WHAT TO UPDATE:
+    - Build command changes or new flags needed
+    - Test timing changes
+    - New known issues discovered during verification
+    - Resolved known issues that no longer apply
+
 integrationProtocols:
   handoffFrom:
     - agent: kobold-orchestrator
