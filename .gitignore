@@ -1,0 +1,11 @@
+# Project-specific files (populated from templates, not versioned)
+knowledge/
+!knowledge/.gitkeep
+
+# Claude Code settings (project-specific permissions)
+settings.json
+settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
